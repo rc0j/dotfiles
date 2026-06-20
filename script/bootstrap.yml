@@ -34,12 +34,6 @@
         repo: https://github.com/zsh-users/zsh-autosuggestions
         dest: ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
         depth: 1
-   
-    - name: Clone zsh-completions plugin
-      ansible.builtin.git:
-        repo: https://github.com/zsh-users/zsh-completions
-        dest: ~/.oh-my-zsh/custom/plugins/zsh-completions
-        depth: 1
      
     - name: Clone zsh-syntax-highlighting plugin
       ansible.builtin.git:

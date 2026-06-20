@@ -37,9 +37,6 @@ set -g allow-rename on
 # Allow mouse controls
 set -g mouse on
 
-# Status theme
-set-option -g status-style "fg=#D8DEE9 bg=#3B4252" # Nord theme
-
 # Reload
 bind r source-file ~/.tmux.conf\; display-message '~/.tmux.conf reloaded'
 bind c new-window -c "#{pane_current_path}" # keep current pane_current_path

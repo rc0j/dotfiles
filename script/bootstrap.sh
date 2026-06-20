@@ -4,7 +4,7 @@ cat << 'EOF'
       |\      _,,,---,,_
 ZZZzz /,`.-'`'    -.  ;-;;,_
      |,4-  ) )-,_. ,\ (  `'-'
-    '---''(_/--'  `-'\_)  Hola, getting things ready, bash style!
+    '---''(_/--'  `-'\_)  - HOLA! -
 EOF
 
 

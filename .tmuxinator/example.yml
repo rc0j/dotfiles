@@ -1,0 +1,10 @@
+name: Example
+root: ~/Developer/clients/Example
+
+on_project_start: echo "Loading Example...With great power comes great responsibility" && sleep 1
+windows:
+  - editor:
+      layout: main-horizontal
+      panes:
+        - "Command XXX"
+        - "watch -n0.1 \"git status\""

@@ -1,52 +1,49 @@
 # --------------------------------------------------------
 # tmux configuration
 # --------------------------------------------------------
-
-
-## tmux config from oh-my-tmux 
-
+## tmux config from oh-my-tmux
 # -- general -------------------------------------------------------------------
-
-set -g default-terminal "screen-256color"
-
+set -g default-terminal "tmux-256color"   # was screen-256color; true 24-bit color in iTerm2/Terminal.app
 setw -g xterm-keys on
 set -s escape-time 10                     # faster command sequences
 set -sg repeat-time 600                   # increase repeat timeout
 set -s focus-events on
-
 set -g prefix2 C-a                        # GNU-Screen compatible prefix
 bind C-a send-prefix -2
-
-set -q -g status-utf8 on                  # expect UTF-8 (tmux < 2.2)
-setw -q -g utf8 on
-
-set -g history-limit 5000                 # boost history
-
-
-# Increase scrollback buffer size to 15k
-set -g history-limit 15000
-
+# (removed: status-utf8 / utf8 options — deprecated/removed since tmux 2.2, throw warnings on modern tmux)
+set -g history-limit 15000                # (removed duplicate 5000 line above this)
 # Start window and pane numbering from 1
 set -g base-index 1
 setw -g pane-base-index 1
 set -g set-titles on          # set terminal title
-
 # Allow automatic renaming of windows
 set -g allow-rename on
-
 # Allow mouse controls
 set -g mouse on
+# Status theme
+set-option -g status-style "fg=#D8DEE9 bg=#3B4252" # Nord theme
+
+# Show session name (= client name, via tmuxinator) clearly at the left,
+# so you always know which client you're in at a glance.
+set -g status-left-length 30
+set -g status-left "#[fg=#88C0D0,bold] #S #[fg=#D8DEE9]| "
 
 # Reload
 bind r source-file ~/.tmux.conf\; display-message '~/.tmux.conf reloaded'
 bind c new-window -c "#{pane_current_path}" # keep current pane_current_path
-
 # Customized keybind
 # take query and ssh
 bind i command-prompt "neww 'ssh %%'"
+
 # tpm
 # https://github.com/tmux-plugins/tpm
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-sensible'
 set -g @plugin 'tmux-plugins/tmux-yank'
+
+# Make mouse-drag selection auto-copy to the macOS system clipboard
+# (not just tmux's internal buffer) — this is the actual "select with
+# mouse, it's on my clipboard" behavior you asked for.
+set -g @yank_selection_mouse 'clipboard'
+
 run '~/.tmux/plugins/tpm/tpm'

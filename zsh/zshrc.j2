@@ -5,6 +5,7 @@
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="aphrodite/aphrodite" # https://github.com/win0err/aphrodite-terminal-theme
+ZSH_THEME="bira"
 
 # History
 # ZSH tweaks that fix several things, icluding ignore any duplicate cmds from appearing :)
@@ -40,35 +41,21 @@ export ARCHFLAGS="-arch x86_64"
 # ------ [ MacOS stuff ] ----------
 # Fix brew path
 export PATH=/opt/homebrew/bin:$PATH
-#export PATH="$HOME/Library/Python/3.9/bin:/opt/homebrew/bin:$PATH"
-export PATH="/opt/homebrew/opt/python@3.11/bin:$PATH"
+export PATH="$HOME/Library/Python/3.9/bin:/opt/homebrew/bin:$PATH"
 
 # -------- [ Alias & others ... ] --------
 
 # Moved from .zsh_alias to make it easier to manage >_>
 alias ddebian="docker pull debian:trixie && docker run -it debian:trixie /bin/bash"
 alias p="cd ~/Developer"
-alias n="cd ~/Documents/notes"
+alias n="cd ~/Documnents/notes"
 alias python="python3"
 alias rsyncmulti="python3 ~/.dotfiles/bin/rsyncmulti.py"
 alias rsync="rsync" # hack to use brew version of rsync instead of built-in outdated version. thanks apple.
 alias macupdate="brew update; brew upgrade; brew cleanup"
-alias git="g"
-alias gp="git push"
-alias gc="git commit"
-alias gs="git status"
-alias his="history | fzf"
+alias tf="terraform"
+alias gaa="git add ."
 
-# TMUX
-tm() {
-  tmuxinator start "$@"
-}
-
-_tm() {
-  local -a projects
-  projects=(${(f)"$(tmuxinator list -n 2>/dev/null)"})
-  compadd -a projects
-}
-compdef _tm tm
-
-eval "$(direnv hook zsh)"
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/raif.coonjah/.lmstudio/bin"
+# End of LM Studio CLI section
